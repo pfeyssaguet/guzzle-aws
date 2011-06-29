@@ -23,8 +23,9 @@ class S3Client extends AbstractClient
 {
     const REGION_DEFAULT = 's3.amazonaws.com';
     const REGION_US_WEST_1 = 's3-us-west-1.amazonaws.com';
-    const REGION_AP_SOUTHEAST_1 = 's3-ap-southeast-1.amazonaws.com';
     const REGION_EU = 's3-eu-west-1.amazonaws.com';
+    const REGION_AP_SOUTHEAST_1 = 's3-ap-southeast-1.amazonaws.com';
+    const REGION_AP_NORTHEAST_1 = 's3-ap-northeast-1.amazonaws.com';
 
     const BUCKET_LOCATION_US = 'US';
     const BUCKET_LOCATION_EU = 'EU';
@@ -59,6 +60,22 @@ class S3Client extends AbstractClient
      * @var bool Force the client reference buckets using path hosting
      */
     protected $forcePathHosting = false;
+
+    /**
+     * Get all Amazon S3 region endpoints
+     *
+     * @return array
+     */
+    public static function getEndpoints()
+    {
+        return array(
+            'us-east-1' => S3Client::REGION_DEFAULT,
+            'us-west-1' => S3Client::REGION_US_WEST_1,
+            'EU' => S3Client::REGION_EU,
+            'ap-southeast-1' => S3Client::REGION_AP_SOUTHEAST_1,
+            'ap-northeast-1' => S3Client::REGION_AP_NORTHEAST_1
+        );
+    }
 
     /**
      * Factory method to create a new S3 client
@@ -171,7 +188,7 @@ class S3Client extends AbstractClient
     public function setForcePathHostingBuckets($forcePathHostring)
     {
         $this->forcePathHosting = (bool)$forcePathHostring;
-        
+
         return $this;
     }
 
@@ -225,7 +242,7 @@ class S3Client extends AbstractClient
     }
 
     /**
-     * Get a signed URL that is valid for a specific amount of time	for a virtual
+     * Get a signed URL that is valid for a specific amount of time for a virtual
      * hosted bucket.
      *
      * @param string $bucket The bucket of the object.

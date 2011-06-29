@@ -48,18 +48,18 @@ class S3Signature extends SignatureV1
             return '';
         }
         // @codeCoverageIgnoreEnd
-        
+
         $amzHeaders = array();
         $headers = array_change_key_case($headers, CASE_LOWER);
         $keys = array_keys($headers);
         $values = array_values($headers);
-        
+
         foreach ($keys as $i => $k) {
             if (stripos($k, 'x-amz-') !== false) {
                 $amzHeaders[$k] = trim($values[$i]);
             }
         }
-        
+
         if (!$amzHeaders) {
             return '';
         } else {
@@ -91,7 +91,11 @@ class S3Signature extends SignatureV1
         if (!empty($headers)) {
             $headers = array_change_key_case($headers, CASE_LOWER);
             if ($headers['host']) {
-                $host = str_replace(array('.s3.amazonaws.com', 's3.amazonaws.com'), '', $headers['host']);
+                $matches = array();
+                $usesS3 = preg_match('/^([a-zA-Z0-9_\-\.]+)\.(?:' . implode('|', array_map('preg_quote', S3Client::getEndpoints())) . ').*$/', $headers['host'], $matches);
+                // If this is a CNAME, then just use the Host header
+                $host = $usesS3 ? $matches[1] : str_replace(S3Client::getEndpoints(), '', $headers['host']);
+
                 if ($host) {
                     if (preg_match('/^[A-Za-z0-9._\-]+$/', $host)) {
                         $bucket = $host . '/';
@@ -105,12 +109,12 @@ class S3Signature extends SignatureV1
                 }
             }
         }
-        
+
         // Add an ending slash to the bucket if it was omitted
         if (preg_match('/^\/[A-Za-z0-9._\-]+$/', $path)) {
             $path .= '/';
         }
-        
+
         // Add the sub resource if a valid sub resource is present
         if (array_key_exists('query', $parts)) {
 
@@ -148,7 +152,7 @@ class S3Signature extends SignatureV1
             $result .= '/';
         }
         // @codeCoverageIgnoreEnd
-        
+
         return $result;
     }
 

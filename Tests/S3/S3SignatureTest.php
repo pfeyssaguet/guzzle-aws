@@ -184,6 +184,17 @@ class S3SignatureTest extends \Guzzle\Tests\GuzzleTestCase
                         'Date' => 'Tue, 27 Mar 2007 19:36:42 +0000'
                     ),
                 ), "PUT\n\n\nTue, 27 Mar 2007 19:36:42 +0000\n/johnsmith/?acl"
+            ),
+            // Send a request to the EU region
+            array(
+                array(
+                    'verb' => 'GET',
+                    'path' => '/johnsmith',
+                    'headers' => array(
+                        'Host' => 'test.s3-eu-west-1.amazonaws.com',
+                        'Date' => 'Tue, 27 Mar 2007 19:36:42 +0000'
+                    ),
+                ), "GET\n\n\nTue, 27 Mar 2007 19:36:42 +0000\n/test/johnsmith"
             )
         );
     }

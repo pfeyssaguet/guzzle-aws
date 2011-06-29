@@ -38,7 +38,7 @@ class S3ClientTest extends \Guzzle\Tests\GuzzleTestCase
 
     /**
      * Data provider for testing if a bucket name is valid
-     * 
+     *
      * @return array
      */
     public function bucketNameProvider()
@@ -140,5 +140,19 @@ class S3ClientTest extends \Guzzle\Tests\GuzzleTestCase
 
         $url = $client->getSignedUrl('images.test.com', 'test.zip', 60, false, false, true);
         $this->assertContains('&x-amz-request-payer=requester&', $url);
+    }
+
+    /**
+     * @covers Guzzle\Aws\S3\S3Client::getEndpoints
+     */
+    public function testReturnsEndpoints()
+    {
+        $this->assertEquals(array(
+            'us-east-1' => 's3.amazonaws.com',
+            'us-west-1' => 's3-us-west-1.amazonaws.com',
+            'EU' => 's3-eu-west-1.amazonaws.com',
+            'ap-southeast-1' => 's3-ap-southeast-1.amazonaws.com',
+            'ap-northeast-1' => 's3-ap-northeast-1.amazonaws.com'
+        ), S3Client::getEndpoints());
     }
 }
