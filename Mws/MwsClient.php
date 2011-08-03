@@ -22,7 +22,21 @@ use Guzzle\Aws\Signature\SignatureV2;
  */
 class MwsClient extends AbstractClient
 {
+    /**
+     * @var string API version
+     */
     const VERSION = '2009-01-01';
+    
+    /**
+     * @var array Supported feeds
+     */
+    protected $feedRegistry = array(
+        'image'             => '\Guzzle\Aws\Mws\Model\Feed\ImageFeed',
+        'inventory'         => '\Guzzle\Aws\Mws\Model\Feed\InventoryFeed',
+        'order_fulfillment' => '\Guzzle\Aws\Mws\Model\Feed\OrderFulfillmentFeed',
+        'price'             => '\Guzzle\Aws\Mws\Model\Feed\PriceFeed',
+        'product'           => '\Guzzle\Aws\Mws\Model\Feed\ProductFeed'
+    );
 
     /**
      * Factory method to create a new MWS client
@@ -69,7 +83,9 @@ class MwsClient extends AbstractClient
 
         // Retry 500 and 503 failures using exponential backoff
         $client->getEventManager()->attach(new ExponentialBackoffPlugin(3, null, function($try){
+            // @codeCoverageIgnoreStart
             return 60;
+            // @codeCoverageIgnoreEnd
         }));
 
         return $client;
@@ -84,9 +100,14 @@ class MwsClient extends AbstractClient
      */
     public function getFeed($feedType)
     {
-        $class = 'Guzzle\\Aws\\Mws\\Model\\Feed\\'
-            . ucfirst(Inflector::camel($feedType));
-
-        return new $class($this);
+        if (!isset($this->feedRegistry[$feedType])) {
+            // @codeCoverageIgnoreStart
+            throw new \RuntimeException('Invalid feed type: ' . $feedType);
+            // @codeCoverageIgnoreEnd
+        }
+        
+        $feedClass = $this->feedRegistry[$feedType];
+        
+        return new $feedClass($this);
     }
 }

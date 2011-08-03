@@ -46,14 +46,6 @@ class CsvReportTest extends GuzzleTestCase
         $this->assertInternalType('string', $str);
     }
 
-    public function testBadCsvData()
-    {
-        $broken = "A\tB\n";
-        $broken .= "1\n";
-        $this->setExpectedException('UnexpectedValueException');
-        $report = new CsvReport($broken);
-    }
-
     public function testBadType()
     {
         $this->setExpectedException('InvalidArgumentException');
