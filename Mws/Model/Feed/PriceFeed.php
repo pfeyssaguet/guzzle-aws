@@ -2,8 +2,6 @@
 
 namespace Guzzle\Aws\Mws\Model\Feed;
 
-use Guzzle\Common\XmlElement;
-
 /**
  * Price feed class
  * 

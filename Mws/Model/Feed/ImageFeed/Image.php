@@ -3,7 +3,6 @@
 namespace Guzzle\Aws\Mws\Model\Feed\ImageFeed;
 
 use Guzzle\Aws\Mws\Model\Feed\AbstractFeedItem;
-use Guzzle\Common\XmlElement;
 
 /**
  * Image feed item

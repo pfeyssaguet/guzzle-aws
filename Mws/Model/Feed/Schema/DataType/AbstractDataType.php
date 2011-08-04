@@ -11,10 +11,6 @@ abstract class AbstractDataType implements DataTypeInterface
 {
 
     /**
-     * @var XmlElement XML output
-     */
-    protected $xml;
-    /**
      * @var array Internal data array
      */
     protected $data;
@@ -43,6 +39,7 @@ abstract class AbstractDataType implements DataTypeInterface
     {
         
     }
+
     // @codeCoverageIgnoreEnd
 
     /**

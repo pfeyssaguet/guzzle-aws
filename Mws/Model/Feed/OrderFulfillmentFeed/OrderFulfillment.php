@@ -3,7 +3,6 @@
 namespace Guzzle\Aws\Mws\Model\Feed\OrderFulfillmentFeed;
 
 use Guzzle\Aws\Mws\Model\Feed\AbstractFeedItem;
-use Guzzle\Common\XmlElement;
 
 /**
  * Order fulfillment feed item

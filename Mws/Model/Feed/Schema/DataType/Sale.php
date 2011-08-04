@@ -2,8 +2,6 @@
 
 namespace Guzzle\Aws\Mws\Model\Feed\Schema\DataType;
 
-use Guzzle\Common\XmlElement;
-
 /**
  * Sale data type
  * 

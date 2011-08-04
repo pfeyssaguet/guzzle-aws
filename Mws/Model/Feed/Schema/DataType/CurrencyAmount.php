@@ -2,8 +2,6 @@
 
 namespace Guzzle\Aws\Mws\Model\Feed\Schema\DataType;
 
-use Guzzle\Common\XmlElement;
-
 /**
  * CurrencyAmount data type
  * 
@@ -16,6 +14,7 @@ use Guzzle\Common\XmlElement;
  */
 class CurrencyAmount extends AbstractDataType
 {
+
     /**
      * Init object
      * 
@@ -31,7 +30,7 @@ class CurrencyAmount extends AbstractDataType
             $this->setBaseCurrencyCode($baseCurrencyCode);
         }
     }
-    
+
     /**
      * Set currency value
      * 
@@ -43,7 +42,7 @@ class CurrencyAmount extends AbstractDataType
     {
         return $this->set('value', number_format($value, 2, '.', ''));
     }
-    
+
     /**
      * Set base currency code
      * 
@@ -54,18 +53,18 @@ class CurrencyAmount extends AbstractDataType
     public function setBaseCurrencyCode($currencyCode)
     {
         if (!in_array($currencyCode, array(
-            'USD',
-            'GBP',
-            'EUR',
-            'JPY',
-            'CAD',
-            'CNY'
-        ))) {
+                'USD',
+                'GBP',
+                'EUR',
+                'JPY',
+                'CAD',
+                'CNY'
+            ))) {
             throw new \InvalidArgumentException('Invalid currency code');
         }
         return $this->set('baseCurrencyCode', $currencyCode);
     }
-    
+
     /**
      * Write XML to output
      * 
@@ -80,8 +79,8 @@ class CurrencyAmount extends AbstractDataType
         $xml->writeAttribute('currency', $this->get('baseCurrencyCode'));
         $xml->text($this->get('value'));
         $xml->endElement();
-        
+
         return $this;
     }
-    
+
 }

@@ -4,7 +4,6 @@ namespace Guzzle\Aws\Mws\Model\Feed\PriceFeed;
 
 use Guzzle\Aws\Mws\Model\Feed\AbstractFeedItem;
 use Guzzle\Aws\Mws\Model\Feed\Schema\DataType;
-use Guzzle\Common\XmlElement;
 
 /**
  * Price feed item

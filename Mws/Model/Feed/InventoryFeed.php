@@ -3,7 +3,6 @@
 namespace Guzzle\Aws\Mws\Model\Feed;
 
 use Guzzle\Aws\Mws\Model\Feed\InventoryFeed\Inventory;
-use Guzzle\Common\XmlElement;
 
 /**
  * Inventory feed class

@@ -4,7 +4,6 @@ namespace Guzzle\Aws\Mws\Model\Feed\ProductFeed;
 
 use Guzzle\Aws\Mws\Model\Feed\AbstractFeedItem;
 use Guzzle\Aws\Mws\Model\Feed\Schema\DataType;
-use Guzzle\Common\XmlElement;
 
 /**
  * Product node base class
@@ -533,6 +532,7 @@ abstract class AbstractProduct extends AbstractFeedItem
             ->writeNode('Title')
             ->writeNode('Brand')
             ->writeNode('Description')
+            ->writeNode('BulletPoint')
             ->writeNode('ItemDimensions')
             ->writeNode('PackageDimensions')
             ->writeNode('PackageWeight')

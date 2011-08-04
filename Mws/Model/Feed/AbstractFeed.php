@@ -8,7 +8,6 @@
 namespace Guzzle\Aws\Mws\Model\Feed;
 
 use Guzzle\Aws\Mws\MwsClient;
-use Guzzle\Common\XmlElement;
 
 /**
  * Abstract feed class

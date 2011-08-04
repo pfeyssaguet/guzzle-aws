@@ -3,7 +3,6 @@
 namespace Guzzle\Aws\Mws\Model\Feed;
 
 use Guzzle\Aws\Mws\Model\Feed\Schema\DataType;
-use Guzzle\Common\XmlElement;
 
 /**
  * Feed item base class
@@ -18,7 +17,7 @@ abstract class AbstractFeedItem
      */
     protected $data;
     /**
-     * @var XmlElement xml output
+     * @var XMLWriter xml output
      */
     protected $xml;
 

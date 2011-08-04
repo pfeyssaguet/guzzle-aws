@@ -3,7 +3,6 @@
 namespace Guzzle\Aws\Mws\Model\Feed;
 
 use Guzzle\Aws\Mws\Model\Feed\ProductFeed\AbstractProduct;
-use Guzzle\Common\XmlElement;
 
 /**
  * Product feed builder

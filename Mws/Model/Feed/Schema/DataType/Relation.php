@@ -2,7 +2,6 @@
 
 namespace Guzzle\Aws\Mws\Model\Feed\Schema\DataType;
 
-use Guzzle\Common\XmlElement;
 
 /**
  * Relation data type

@@ -7,7 +7,6 @@
 
 namespace Guzzle\Aws\Mws\Model\Feed;
 
-use Guzzle\Common\XmlElement;
 use Guzzle\Aws\Mws\Model\Feed\OrderFulfillmentFeed\OrderFulfillment;
 
 /**
