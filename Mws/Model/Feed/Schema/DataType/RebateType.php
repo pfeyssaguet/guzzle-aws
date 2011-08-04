@@ -94,7 +94,7 @@ class RebateType extends AbstractDataType
     public function setRebateName($value)
     {
         if (strlen($value) > 40) {
-            throw new \InvalidArgument('Rebate name too long');
+            throw new \InvalidArgumentException('Rebate name too long');
         }
 
         return $this->set('name', $value);

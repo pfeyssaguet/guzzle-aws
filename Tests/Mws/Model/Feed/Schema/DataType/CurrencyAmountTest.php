@@ -25,4 +25,16 @@ class CurrencyAmountTest extends GuzzleTestCase
         $dom->loadXML($xml->outputMemory(true));
         $this->assertTrue($dom->schemaValidate(__DIR__ . '/../../../../XSD/DataType.xsd'));
     }
+    
+    public function testSetBaseCurrencyCode()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        
+        $node = new CurrencyAmount();
+        $this->setExpectedException('InvalidArgumentException');
+        $node->setBaseCurrencyCode('Foo');
+    }
 }

@@ -85,4 +85,94 @@ class ClothingProductTest extends GuzzleTestCase
         $dom->loadXML($xml->outputMemory(true));
         $this->assertTrue($dom->schemaValidate(__DIR__ . '/../../../XSD/Product.xsd'));
     }
+    
+    /**
+     * @depends testClothingProduct
+     */
+    public function testSetParentage()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new ClothingProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setParentage('Foo');
+    }
+    
+    /**
+     * @depends testClothingProduct
+     */
+    public function testSetVariationTheme()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new ClothingProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setVariationTheme('Foo');
+    }
+    
+    public function testSetClothingType()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new ClothingProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setClothingType('Foo');
+    }
+    
+    public function testAddPerformanceRating()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new ClothingProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->addPerformanceRating('Foo');
+    }
+    
+    public function testSetCountryOfOrigin()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new ClothingProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setCountryOfOrigin('Foo');
+    }
+    
+    public function testSetCupSize()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new ClothingProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setCupSize('Foo');
+    }
+    
+    public function testSetShoeWidth()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new ClothingProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setShoeWidth('Foo');
+    }
 }

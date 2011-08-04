@@ -28,4 +28,28 @@ class RebateTypeTest extends GuzzleTestCase
         $dom->loadXML($xml->outputMemory(true));
         $this->assertTrue($dom->schemaValidate(__DIR__ . '/../../../../XSD/DataType.xsd'));
     }
+    
+    public function testSetRebateMessage()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        
+        $node = new RebateType();
+        $this->setExpectedException('InvalidArgumentException');
+        $node->setRebateMessage(str_repeat('x', 300));
+    }
+    
+    public function testSetRebateName()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        
+        $node = new RebateType();
+        $this->setExpectedException('InvalidArgumentException');
+        $node->setRebateName(str_repeat('x', 300));
+    }
 }

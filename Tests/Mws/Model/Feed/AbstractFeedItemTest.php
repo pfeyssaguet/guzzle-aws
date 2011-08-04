@@ -8,30 +8,74 @@ use Guzzle\Aws\Mws\Model\Feed\Schema\DataType;
 
 class AbstractFeedItemTest extends GuzzleTestCase
 {
-    public function testAbstractFeedItem()
+    protected function getItem()
     {
         $xml = new \XMLWriter();
         $xml->openMemory();
         $xml->setIndent(true);
+        $item = new Price($xml);
         
-        $price = new Price($xml);
+        return $item;
+    }
+    
+    public function testAbstractFeedItem()
+    {
+        $item = $this->getItem();
         
-        $price->add('Field1', 'Foo');
-        $price->set('Field2', 'Bar');
-        $price->set('Field3', array(
+        $item->writeXml();
+        $item->toString();
+        $item->__toString();
+    }
+    
+    public function testSet()
+    {
+        $item = $this->getItem();
+        $item->set('Field2', 'Bar');
+        $item->set('Field3', array(
             'Sample' => DataType\LengthDimension::factory(1, 'IN')
         ));
         
-        $foo = $price->get('Field2');
+        $foo = $item->get('Field2');
         $this->assertEquals($foo, 'Bar');
         
-        $price->writeNode('Field1');
-        $price->writeNode('Field2');
-        $price->writeNode('Field3');
+        $this->setExpectedException('InvalidArgumentException');
+        $item->set('Foo', null);
         
-        $price->writeXml();
-        
-        $price->toString();
-        $price->__toString();
+        $item->writeNode('Field2');
+        $item->writeNode('Field3');
     }
+    
+    public function testAdd()
+    {
+        $item = $this->getItem();
+        
+        $item->add('Field1', 'Foo');
+        
+        $item->writeNode('Field1');
+        
+        $this->setExpectedException('RuntimeException');
+        $item->add('Test', 1, 1);
+        $item->add('Test', 1, 1);
+    }
+    
+    /**
+     * @depends testAbstractFeedItem
+     * @depends testSet
+     * @depends testAdd
+     */
+    public function testWriteNode()
+    {
+        $item = $this->getItem();
+        
+        $item->set('Field1', 'Foo');
+        $item->add('Field2', 'Bar');
+        $item->add('Field2', 'Baz');
+        $item->add('Field3', DataType\LengthDimension::factory('1', 'IN'));
+        
+        $item
+            ->writeNode('Field1')
+            ->writeNode('Field2')
+            ->writeNode('Field3');
+    }
+    
 }

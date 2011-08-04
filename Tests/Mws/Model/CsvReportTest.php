@@ -44,6 +44,11 @@ class CsvReportTest extends GuzzleTestCase
 
         $str = $report->__toString();
         $this->assertInternalType('string', $str);
+        
+        // Test with bad data
+        $data = "A\tB\tC\n";
+        $data .= "1\t2";
+        $report = new CsvReport($data);
     }
 
     public function testBadType()
@@ -51,4 +56,15 @@ class CsvReportTest extends GuzzleTestCase
         $this->setExpectedException('InvalidArgumentException');
         $report = new CsvReport(false);
     }
+    
+    public function testBadData()
+    {
+        $data = array(
+            'A' => array(1,2,3)
+        );
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $report = new CsvReport($data);
+    }
+    
 }

@@ -81,7 +81,7 @@ class MwsClient extends AbstractClient
             -9999
         );
 
-        // Retry 500 and 503 failures using exponential backoff
+        // Retry 500 and 503 failures, up to 3 times
         $client->getEventManager()->attach(new ExponentialBackoffPlugin(3, null, function($try){
             // @codeCoverageIgnoreStart
             return 60;

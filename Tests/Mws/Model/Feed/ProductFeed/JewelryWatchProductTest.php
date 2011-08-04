@@ -66,4 +66,79 @@ class JewelryWatchProductTest extends GuzzleTestCase
         $dom->loadXML($xml->outputMemory(true));
         $this->assertTrue($dom->schemaValidate(__DIR__ . '/../../../XSD/Product.xsd'));
     }
+    
+    /**
+     * @depends testJewelryWatchProduct
+     */
+    public function testSetParentage()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new JewelryWatchProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setParentage('Foo');
+    }
+    
+    /**
+     * @depends testJewelryWatchProduct
+     */
+    public function testSetVariationTheme()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new JewelryWatchProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setVariationTheme('Foo');
+    }
+    
+    /**
+     * @depends testJewelryWatchProduct
+     */
+    public function testSetCountryOfOrigin()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new JewelryWatchProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setCountryOfOrigin('Foo');
+    }
+    
+    /**
+     * @depends testJewelryWatchProduct
+     */
+    public function testSetModelYear()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new JewelryWatchProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setModelYear(123);
+    }
+    
+    /**
+     * @depends testJewelryWatchProduct
+     */
+    public function testSetLithiumBatteryPackaging()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new JewelryWatchProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setLithiumBatteryPackaging('Foo');
+    }
 }

@@ -94,4 +94,15 @@ class OrderFulfillmentTest extends GuzzleTestCase
         $dom->loadXML($xml->outputMemory(true));
         $this->assertTrue($dom->schemaValidate(__DIR__ . '/../../../XSD/Fulfillment.xsd'));
     }
+    
+    public function testSetCarrierCode()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $f = new OrderFulfillment($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $f->setCarrierCode('Foo');
+    }
 }

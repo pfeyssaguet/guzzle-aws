@@ -84,5 +84,95 @@ class SportsProductTest extends GuzzleTestCase
         $dom->loadXML($xml->outputMemory(true));
         $this->assertTrue($dom->schemaValidate(__DIR__ . '/../../../XSD/Product.xsd'));
     }
+    
+    /**
+     * @depends testSportsProduct
+     */
+    public function testSetParentage()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new SportsProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setParentage('Foo');
+    }
+    
+    /**
+     * @depends testSportsProduct
+     */
+    public function testSetVariationTheme()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new SportsProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setVariationTheme('Foo');
+    }
+    
+    /**
+     * @depends testSportsProduct
+     */
+    public function testSetProductType()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new SportsProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setProductType('Foo');
+    }
+    
+    /**
+     * @depends testSportsProduct
+     */
+    public function testSetHand()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new SportsProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setHand('Foo');
+    }
+    
+    /**
+     * @depends testSportsProduct
+     */
+    public function testSetHeadSize()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new SportsProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setHeadSize('Foo');
+    }
+    
+    /**
+     * @depends testSportsProduct
+     */
+    public function testSetShaftType()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        $product = new SportsProduct($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product->setShaftType('Foo');
+    }
 }
 

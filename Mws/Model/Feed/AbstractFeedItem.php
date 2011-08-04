@@ -108,7 +108,7 @@ abstract class AbstractFeedItem
             // array
             foreach ($value as $k => $v) {
                 if ($v instanceOf DataType\DataTypeInterface) {
-                    $v->writeXml($this->xml, $k);
+                    $v->writeXml($this->xml, $nodeName);
                 } else {
                     $this->xml->writeElement($nodeName, $v);
                 }

@@ -27,4 +27,17 @@ class BatteryTest extends GuzzleTestCase
         $dom->loadXML($xml->outputMemory(true));
         $this->assertTrue($dom->schemaValidate(__DIR__ . '/../../../../XSD/DataType.xsd'));
     }
+    
+    public function testSetBatteryType()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        
+        $battery = new Battery();
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $battery->setBatteryType('foo');
+    }
 }

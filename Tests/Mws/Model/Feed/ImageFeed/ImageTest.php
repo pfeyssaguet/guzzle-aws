@@ -12,8 +12,8 @@ class ImageTest extends GuzzleTestCase
         $xml = new \XMLWriter();
         $xml->openMemory();
         $xml->setIndent(true);
-        
         $image = new Image($xml);
+        
         $image
             ->setImageLocation('http://www.example.org')
             ->setImageType('Main')
@@ -24,5 +24,16 @@ class ImageTest extends GuzzleTestCase
         $dom = new \DOMDocument();
         $dom->loadXML($xml->outputMemory(true));
         $this->assertTrue($dom->schemaValidate(__DIR__ . '/../../../XSD/Image.xsd'));
+    }
+    
+    public function testSetImageType()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $image = new Image($xml);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $image->setImageType('Foo');
     }
 }

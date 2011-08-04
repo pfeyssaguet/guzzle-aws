@@ -80,4 +80,43 @@ class AbstractProductTest extends GuzzleTestCase
         
         //$this->assertXmlStringEqualsXmlFile(__DIR__ . '/Mock/AbstractProduct.xml', $dom->saveXML());
     }
+    
+    /**
+     * @depends testAbstractProduct
+     */
+    public function testAddCPSIAWarning()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product = new ClothingProduct($xml);
+        $product->addCPSIAWarning('Foo');
+    }
+    
+    public function testSetDeliveryChannel()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product = new ClothingProduct($xml);
+        $product->setDeliveryChannel('Foo');
+    }
+    
+    public function testSetPriority()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        $xml->setIndentString("\t");
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $product = new ClothingProduct($xml);
+        $product->setPriority(100);
+    }
 }

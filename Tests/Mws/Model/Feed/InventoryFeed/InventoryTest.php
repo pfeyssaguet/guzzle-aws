@@ -72,4 +72,38 @@ class InventoryTest extends GuzzleTestCase
         $dom->loadXML($xml->outputMemory(true));
         $this->assertTrue($dom->schemaValidate(__DIR__ . '/../../../XSD/Inventory.xsd'));
     }
+    
+    public function testSetLookup()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $inv = new Inventory($xml);
+        $inv->setLookup('Foo');
+    }
+    
+    public function testSetSwitchFulfillmentTo()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        
+        $this->setExpectedException('InvalidArgumentException');
+        $inv = new Inventory($xml);
+        $inv->setSwitchFulfillmentTo('Foo');
+    }
+    
+    public function testWriteXml()
+    {
+        $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->setIndent(true);
+        
+        $this->setExpectedException('RuntimeException');
+        $inv = new Inventory($xml);
+        
+        $inv->writeXml();
+    }
 }
