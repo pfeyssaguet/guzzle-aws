@@ -35,7 +35,8 @@ class MwsClient extends AbstractClient
         'inventory'         => '\Guzzle\Aws\Mws\Model\Feed\InventoryFeed',
         'order_fulfillment' => '\Guzzle\Aws\Mws\Model\Feed\OrderFulfillmentFeed',
         'price'             => '\Guzzle\Aws\Mws\Model\Feed\PriceFeed',
-        'product'           => '\Guzzle\Aws\Mws\Model\Feed\ProductFeed'
+        'product'           => '\Guzzle\Aws\Mws\Model\Feed\ProductFeed',
+        'relationship'      => '\Guzzle\Aws\Mws\Model\Feed\RelationshipFeed'
     );
 
     /**

@@ -90,7 +90,10 @@ abstract class AbstractFeed
             $this->xml->endDocument();
             $this->output = $this->xml->outputMemory(true);
         }
-
+        
+        // Remove empty elements
+        $this->output = preg_replace('#<[^>]*/>#', '', $this->output);
+        
         return $this->output;
     }
 

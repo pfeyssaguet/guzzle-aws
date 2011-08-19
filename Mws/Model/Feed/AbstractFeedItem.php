@@ -140,7 +140,7 @@ abstract class AbstractFeedItem
     public function toString()
     {
         $this->xml->endDocument();
-
+        
         return $this->xml->outputMemory();
     }
 

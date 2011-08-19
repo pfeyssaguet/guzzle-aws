@@ -8,6 +8,12 @@ use Guzzle\Aws\Signature\SignatureV2;
 use Guzzle\Common\Inspector;
 use Guzzle\Common\Inflector;
 
+/**
+ * Product Advertising API client class
+ * 
+ * @author Harold Asbridge <harold@shoebacca.com>
+ * @see http://docs.amazonwebservices.com/AWSECommerceService/2011-08-01/DG/
+ */
 class ProductAdvertisingClient extends AbstractClient
 {
     /**
