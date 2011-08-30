@@ -28,7 +28,12 @@ class ImageFeedTest extends GuzzleTestCase
         $client = $this->getServiceBuilder()->get('test.mws');
         $feed = $client->getFeed('image');
         
-        $feed->addImage(new Image($feed->getXml()));
+        $image = new Image($feed->getXml());
+        $image
+            ->setSku('ASDF')
+            ->setImageLocation('http://www.example.org');
+        
+        $feed->addImage($image);
         
         $dom = new \DOMDocument();
         $dom->loadXML($feed->toString());

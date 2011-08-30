@@ -31,7 +31,13 @@ class OrderFulfillmentFeedTest extends GuzzleTestCase
     {
         $client = $this->getServiceBuilder()->get('test.mws');
         $feed = $client->getFeed('order_fulfillment');
-        $feed->addFulfillment(new OrderFulfillment($feed->getXml()));
+        
+        $fulfillment = new OrderFulfillment($feed->getXml());
+        $fulfillment
+            ->setAmazonOrderId('000-123-123')
+            ->setShipperTrackingNumber('ASDF');
+        
+        $feed->addFulfillment($fulfillment);
         
         $dom = new \DOMDocument();
         $dom->loadXML($feed->toString());

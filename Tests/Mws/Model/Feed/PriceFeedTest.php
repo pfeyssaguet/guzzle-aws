@@ -4,6 +4,7 @@ namespace Guzzle\Aws\Tests\Mws\Model\Feed;
 
 use Guzzle\Tests\GuzzleTestCase;
 use Guzzle\Aws\Mws\Model\Feed\PriceFeed\Price;
+use Guzzle\Aws\Mws\Model\Feed\Schema\DataType;
 
 class PriceFeedTest extends GuzzleTestCase
 {
@@ -28,7 +29,11 @@ class PriceFeedTest extends GuzzleTestCase
         $client = $this->getServiceBuilder()->get('test.mws');
         $feed = $client->getFeed('price');
         
-        $feed->addPrice(new Price($feed->getXml()));
+        $price = new Price($feed->getXml());
+        $price
+            ->setSku('ASDF')
+            ->setStandardPrice(DataType\CurrencyAmount::factory(10.00, 'USD'));
+        $feed->addPrice($price);
         
         $dom = new \DOMDocument();
         $dom->loadXML($feed->toString());
