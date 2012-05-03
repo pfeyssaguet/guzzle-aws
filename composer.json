@@ -4,7 +4,6 @@
     "description": "Guzzle PHP client for Unfuddle",
     "keywords": ["framework", "Unfuddle"],
     "homepage": "http://www.guzzlephp.org/",
-    "version": "1.0.0",
     "license": "SHOEBACCA",
     "authors": [
         {
