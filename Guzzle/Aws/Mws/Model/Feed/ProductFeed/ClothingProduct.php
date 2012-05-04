@@ -656,7 +656,7 @@ class ClothingProduct extends AbstractProduct
      */
     public function setPillowSize($value)
     {
-        return $this->seT('PillowSize', $value);
+        return $this->set('PillowSize', $value);
     }
 
     /**
