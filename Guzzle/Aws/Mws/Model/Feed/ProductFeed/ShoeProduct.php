@@ -22,6 +22,24 @@ class ShoeProduct extends AbstractProduct
      */
     public function addDepartment($value)
     {
+        if (!in_array(strtolower($value), array(
+            'baby-boy',
+            'baby-girl',
+            'boys',
+            'girls',
+            'mens',
+            'unisex-adult',
+            'unisex-baby',
+            'unisex-child',
+            'womens',
+            'teen-girls',
+            'teen-boys',
+            'unisex-teen'
+        ))
+        ) {
+            throw new \InvalidArgumentException('Invalid Department value');
+        }
+
         return $this->add('Department', $value, 10);
     }
 
@@ -42,16 +60,16 @@ class ShoeProduct extends AbstractProduct
      */
     public function setClothingType($value)
     {
-        if (!in_array($value, array(
-            'Accessory',
-            'Bag',
-            'Shoes',
-            'ShoeAccessory',
-            'Handbag',
-            'Eyewear'
+        if (!in_array(strtolower($value), array(
+            'accessory',
+            'bag',
+            'shoes',
+            'shoeaccessory',
+            'handbag',
+            'eyewear'
         ))
         ) {
-            throw new \InvalidArgumentException('Invalid clothing type');
+            throw new \InvalidArgumentException('Invalid ClothingType value');
         }
 
         return $this->set('ClothingType', $value);
@@ -64,12 +82,12 @@ class ShoeProduct extends AbstractProduct
      */
     public function setParentage($value)
     {
-        if (!in_array($value, array(
+        if (!in_array(strtolower($value), array(
             'parent',
             'child'
         ))
         ) {
-            throw new \InvalidArgumentException('Invalid parentage value');
+            throw new \InvalidArgumentException('Invalid Parentage value');
         }
 
         return $this->set('Parentage', $value);
@@ -102,7 +120,7 @@ class ShoeProduct extends AbstractProduct
      */
     public function setVariationTheme($value)
     {
-        if (!in_array($value, array(
+        if (!in_array(strtolower($value), array(
             'Size',
             'Color',
             'SizeColor',
@@ -111,7 +129,7 @@ class ShoeProduct extends AbstractProduct
             'ColorName-LensWidth'
         ))
         ) {
-            throw new \InvalidArgumentException('Invalid variation theme');
+            throw new \InvalidArgumentException('Invalid VariationTheme value');
         }
 
         return $this->set('VariationTheme', $value);
@@ -125,7 +143,7 @@ class ShoeProduct extends AbstractProduct
     public function setCountryOfOrigin($value)
     {
         if (strlen($value) != 2) {
-            throw new \InvalidArgumentException('Invalid country code');
+            throw new \InvalidArgumentException('Invalid CountryOfOrigin value');
         }
 
         return $this->set('CountryOfOrigin', $value);
@@ -138,6 +156,32 @@ class ShoeProduct extends AbstractProduct
      */
     public function setColorMap($value)
     {
+        if (!in_array(strtolower($value), array(
+            'beige',
+            'black',
+            'blue',
+            'bronze',
+            'brown',
+            'gold',
+            'green',
+            'gray',
+            'metallic',
+            'multi-colored',
+            'off-white',
+            'orange',
+            'pink',
+            'purple',
+            'red',
+            'silver',
+            'transparent',
+            'turquoise',
+            'white',
+            'yellow'
+        ))
+        ) {
+            throw new \InvalidArgumentException('Invalid ColorMap value');
+        }
+
         return $this->set('ColorMap', $value);
     }
 
@@ -158,6 +202,15 @@ class ShoeProduct extends AbstractProduct
      */
     public function setArchType($value)
     {
+        if (!in_array(strtolower($value), array(
+            'neutral',
+            'motion-control',
+            'stability'
+        ))
+        ) {
+            throw new \InvalidArgumentException('Invalid ArchType value');
+        }
+
         return $this->set('ArchType', $value);
     }
 
@@ -238,6 +291,17 @@ class ShoeProduct extends AbstractProduct
      */
     public function setCleatDescription($value)
     {
+        if (!in_array(strtolower($value), array(
+            'detachable-cleats',
+            'indoor',
+            'interchangable-cleats',
+            'outdoor',
+            'turf'
+        ))
+        ) {
+            throw new \InvalidArgumentException('Invalid CleatDescription value');
+        }
+
         return $this->set('CleatDescription', $value);
     }
 
@@ -248,6 +312,15 @@ class ShoeProduct extends AbstractProduct
      */
     public function setCleatMaterialType($value)
     {
+        if (!in_array(strtolower($value), array(
+            'metal-cleats',
+            'molded-cleats'
+        ))
+        ) {
+            throw new \InvalidArgumentException('Invalid CleatMaterialType value');
+        }
+
+
         return $this->set('CleatMaterialType', $value);
     }
 
@@ -318,6 +391,17 @@ class ShoeProduct extends AbstractProduct
      */
     public function setHeelType($value)
     {
+        if (!in_array(strtolower($value), array(
+            'no-heel',
+            'kitten-heel',
+            'low-heel',
+            'mid-heel',
+            'high-heel'
+        ))
+        ) {
+            throw new \InvalidArgumentException('Invalid HeelType value');
+        }
+
         return $this->set('HeelType', $value);
     }
 
@@ -338,7 +422,7 @@ class ShoeProduct extends AbstractProduct
      */
     public function setIsStainResistant($value)
     {
-        return $this->set('IsStainResistant', (bool) $value);
+        return $this->set('IsStainResistant', (bool)$value);
     }
 
     /**
@@ -408,6 +492,26 @@ class ShoeProduct extends AbstractProduct
      */
     public function setLiningDescription($value)
     {
+        if (!in_array(strtolower($value), array(
+            'cotton',
+            'fabric',
+            'faux-shearling-or-fur',
+            'gore-tex',
+            'leather',
+            'leather-and-synthetic',
+            'mesh',
+            'no-lining',
+            'nylon',
+            'polyester',
+            'shearling-or-fur',
+            'synthetic',
+            'unknown',
+            'vinyl'
+        ))
+        ) {
+            throw new \InvalidArgumentException('Invalid LiningDescription value');
+        }
+
         return $this->set('LiningDescription', $value);
     }
 
@@ -418,10 +522,41 @@ class ShoeProduct extends AbstractProduct
      */
     public function setOccasionAndLifestyle($value)
     {
+        if (!in_array(strtolower($value), array(
+            'all-weather',
+            'athletic',
+            'bridal',
+            'casual',
+            'cold-weather',
+            'dress',
+            'fashion',
+            'formal',
+            'hiking',
+            'indoor',
+            'outdoor',
+            'performance',
+            'professional',
+            'rain',
+            'snow',
+            'work-utility',
+            'yoga'
+        ))
+        ) {
+            throw new \InvalidArgumentException('Invalid OccasionAndLifestyle value');
+        }
+
         return $this->set('OccasionAndLifestyle', $value);
     }
 
-//TODO: ->writeNode('MagnificationStrength') Dimension
+    /**
+     * @param string $value
+     *
+     * @return ShoeProduct
+     */
+    public function setMagnificationStrength($value)
+    {
+        return $this->set('MagnificationStrength', $value);
+    }
 
     /**
      * @param string $value
@@ -440,6 +575,49 @@ class ShoeProduct extends AbstractProduct
      */
     public function setMaterialType($value)
     {
+        if (!in_array(strtolower($value), array(
+            'canvas',
+            'cotton',
+            'crocodile',
+            'elastic',
+            'exotic',
+            'fabric',
+            'faux-fur',
+            'fleece',
+            'fur',
+            'haircalf',
+            'hemp',
+            'lace',
+            'leather',
+            'leather-and-fabric',
+            'leather-and-mesh',
+            'leather-and-rubber',
+            'leather-and-synthetic',
+            'lizard',
+            'mesh',
+            'microfiber',
+            'nubuck',
+            'patent-leather',
+            'polyester',
+            'rubber',
+            'satin',
+            'sheepskin',
+            'silk',
+            'snakeskin',
+            'suede',
+            'synthetic',
+            'synthetic-and-fabric',
+            'synthetic-and-leather',
+            'synthetic-and-mesh',
+            'synthetic-and-rubber',
+            'velvet',
+            'wood',
+            'wool'
+        ))
+        ) {
+            throw new \InvalidArgumentException('Invalid MaterialType value');
+        }
+
         return $this->set('MaterialType', $value);
     }
 
@@ -500,6 +678,26 @@ class ShoeProduct extends AbstractProduct
      */
     public function setPatternStyle($value)
     {
+        if (!in_array(strtolower($value), array(
+            'animal-print',
+            'checkered',
+            'floral',
+            'fringed',
+            'herringbone',
+            'hounds-tooth',
+            'paisley',
+            'plaid',
+            'polka-dots',
+            'ruched',
+            'solid',
+            'stripes',
+            'studded',
+            'woven'
+        ))
+        ) {
+            throw new \InvalidArgumentException('Invalid PatternStyle value');
+        }
+
         return $this->set('PatternStyle', $value);
     }
 
@@ -513,7 +711,46 @@ class ShoeProduct extends AbstractProduct
         return $this->set('PerformanceRating', $value);
     }
 
-//TODO: ->writeNode('PlatformHeight') Dimension
+    /**
+     * @param string $value
+     *
+     * @return ShoeProduct
+     */
+    public function setPlatformHeight($value)
+    {
+        if (!in_array(strtolower($value), array(
+            '0.25',
+            '0.50',
+            '0.75',
+            '1.00',
+            '1.25',
+            '1.50',
+            '1.75',
+            '2.00',
+            '2.25',
+            '2.50',
+            '2.75',
+            '3.00',
+            '3.25',
+            '3.50',
+            '3.75',
+            '4.00',
+            '4.25',
+            '4.50',
+            '4.75',
+            '5.00',
+            '5.25',
+            '5.50',
+            '5.75',
+            '6.00'
+
+        ))
+        ) {
+            throw new \InvalidArgumentException('Invalid PlatformHeight value');
+        }
+
+        return $this->set('PlatformHeight', $value);
+    }
 
     /**
      * @param string $value
@@ -545,9 +782,36 @@ class ShoeProduct extends AbstractProduct
         return $this->set('Season', $value);
     }
 
-//TODO: ->writeNode('ShaftHeight') StringLengthOptionalDimension
-//TODO: ->writeNode('ShaftWidth') StringLengthOptionalDimension
-//TODO: ->writeNode('ShaftDiameter') StringLengthOptionalDimension
+    /**
+     * @param string $value
+     *
+     * @return ShoeProduct
+     */
+    public function setShaftHeight($value)
+    {
+        return $this->set('ShaftHeight', $value);
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return ShoeProduct
+     */
+    public function setShaftWidth($value)
+    {
+        return $this->set('ShaftWidth', $value);
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return ShoeProduct
+     */
+    public function setShaftDiameter($value)
+    {
+        return $this->set('ShaftDiameter', $value);
+    }
+
     /**
      * @param DataType\LengthDimension $value
      *
@@ -558,7 +822,29 @@ class ShoeProduct extends AbstractProduct
         return $this->set('ShoulderStrapDrop', $value);
     }
 
-//TODO: ->writeNode('ShoeHeightMap') Dimension
+    /**
+     * @param string $value
+     *
+     * @return ShoeProduct
+     */
+    public function setShoeHeightMap($value)
+    {
+        if (!in_array(strtolower($value), array(
+            'above-the-knee',
+            'ankle-high',
+            'high-top',
+            'knee-high',
+            'low-top',
+            'mid-calf',
+            'mid-top',
+            'thigh-high'
+        ))
+        ) {
+            throw new \InvalidArgumentException('Invalid ShoeHeightMap value');
+        }
+
+        return $this->set('ShoeHeightMap', $value);
+    }
 
     /**
      * @param string $value
@@ -577,6 +863,25 @@ class ShoeProduct extends AbstractProduct
      */
     public function setSoleMaterial($value)
     {
+        if (!in_array(strtolower($value), array(
+            'cork',
+            'crepe',
+            'fabric',
+            'felt',
+            'latex',
+            'leather',
+            'leather-and-rubber',
+            'lug-sole',
+            'manmade',
+            'rubber',
+            'suede',
+            'vibram',
+            'wood'
+        ))
+        ) {
+            throw new \InvalidArgumentException('Invalid SoleMaterial value');
+        }
+
         return $this->set('SoleMaterial', $value);
     }
 
@@ -587,6 +892,21 @@ class ShoeProduct extends AbstractProduct
      */
     public function setStrapType($value)
     {
+        if (!in_array(strtolower($value), array(
+            'ankle-strap',
+            'ankle-wrap',
+            'backstrap',
+            'monk-strap',
+            'slingback',
+            't-strap',
+            'thong',
+            'toe-strap',
+            'adjustable-strap'
+        ))
+        ) {
+            throw new \InvalidArgumentException('Invalid StrapType value');
+        }
+
         return $this->set('StrapType', $value);
     }
 
@@ -667,13 +987,13 @@ class ShoeProduct extends AbstractProduct
      */
     public function setWaterResistanceLevel($value)
     {
-        if (!in_array($value, array(
+        if (!in_array(strtolower($value), array(
             'waterproof',
             'not_water_resistant',
             'water_resistant'
         ))
         ) {
-            throw new \InvalidArgumentException('Invalid water resistance level');
+            throw new \InvalidArgumentException('Invalid WaterResistanceLevel value');
         }
 
         return $this->set('WaterResistanceLevel', $value);
