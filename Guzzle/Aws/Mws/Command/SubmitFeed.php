@@ -55,6 +55,7 @@ class SubmitFeed extends AbstractMwsCommand
     protected $action = 'SubmitFeed';
     protected $requestMethod = RequestInterface::POST;
     protected $body;
+    protected $version = '2009-01-01';
 
     /**
      * {@inheritdoc}

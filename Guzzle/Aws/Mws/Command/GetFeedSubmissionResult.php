@@ -36,6 +36,11 @@ class GetFeedSubmissionResult extends AbstractMwsCommand
      * {@inheritdoc}
      */
     protected $resultNode = 'Message';
+    
+    /**
+     * {@inheritdoc}
+     */
+    protected $version = '2009-01-01';
 
     /**
      * Set feed submission ID
