@@ -25,6 +25,11 @@ class GetFeedSubmissionListByNextToken extends AbstractMwsCommand
      * {@inheritdoc}
      */
     protected $action = 'GetFeedSubmissionListByNextToken';
+    
+    /**
+     * {@inheritdoc}
+     */
+    protected $version = '2009-01-01';
 
     /**
      * Set next token

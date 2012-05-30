@@ -26,6 +26,11 @@ class ListOrdersByNextToken extends AbstractMwsOrderCommand
      * {@inheritdoc}
      */
     protected $resultNode = 'ListOrdersByNextTokenResult';
+    
+    /**
+     * {@inheritdoc}
+     */
+    protected $version = '2011-01-01';
 
     /**
      * Set next token

@@ -44,6 +44,11 @@ class ListOrders extends AbstractIterableMwsOrderCommand
      * {@inheritdoc}
      */
     protected $recordPath = '//Orders/Order';
+    
+    /**
+     * {@inheritdoc}
+     */
+    protected $version = '2011-01-01';
 
     /**
      * Prepare request

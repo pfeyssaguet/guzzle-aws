@@ -19,11 +19,16 @@ class GetOrder extends AbstractMwsOrderCommand
      * {@inheritdoc}
      */
     protected $action = 'GetOrder';
-
+    
     /**
      * {@inheritdoc}
      */
     protected $recordPath = '//Orders/Order';
+    
+    /**
+     * {@inheritdoc}
+     */
+    protected $version = '2011-01-01';
 
     /**
      * Set amazon order ID(s)

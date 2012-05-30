@@ -23,7 +23,6 @@ use Guzzle\Common\XmlElement;
  */
 class AbstractMwsCommand extends AbstractCommand
 {
-
     /**
      * @var string MWS operation name
      */
@@ -36,6 +35,11 @@ class AbstractMwsCommand extends AbstractCommand
      * @var string xpath query to records in result
      */
     protected $recordPath;
+    
+    /**
+     * @var string API section version
+     */
+    protected $version;
 
     /**
      * Prepare command before execution
@@ -52,7 +56,10 @@ class AbstractMwsCommand extends AbstractCommand
             $this->request = $this->client->createRequest($this->requestMethod);
         }
 
-        $this->request->getQuery()->set('Action', $this->action);
+        $this->request->getQuery()
+            ->set('Action', $this->action)
+            ->set('Version', $this->version);
+        
 
         // Set authorization fields
         $config = $this->getClient()->getConfig();
@@ -60,7 +67,7 @@ class AbstractMwsCommand extends AbstractCommand
             ->set('AWSAccessKeyId', $config['access_key'])
             ->set('Marketplace', $config['marketplace_id'])
             ->set('Merchant', $config['merchant_id']);
-
+        
         // Add any additional method params
         foreach ($this->data as $param => $value) {
             if ($param == 'headers') {

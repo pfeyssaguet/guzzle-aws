@@ -62,6 +62,20 @@ class QueryStringAuthPlugin implements Observer
     }
 
     /**
+     * Set API version
+     * 
+     * @param string $version
+     * 
+     * @return QueryStringAuthPlugin 
+     */
+    public function setApiVersion($version)
+    {
+        $this->apiVersion = $version;
+        return $this;
+    }
+    
+
+    /**
      * Add required query string fields to a request
      *
      * @param RequestInterface $request Request to modify
@@ -69,9 +83,12 @@ class QueryStringAuthPlugin implements Observer
     public function addRequiredQueryString(RequestInterface $request)
     {
         $qs = $request->getQuery();
+        
+        $version = $qs->get('Version') or $version = $this->apiVersion;
+        
         // Add required parameters to the request
         $qs->set('Timestamp', gmdate('c'));
-        $qs->set('Version', $this->apiVersion);
+        $qs->set('Version', $version);
         $qs->set('SignatureVersion', $this->signature->getVersion());
         // Signature V2 and onward functionality
         if ((int) $this->signature->getVersion() > 1) {

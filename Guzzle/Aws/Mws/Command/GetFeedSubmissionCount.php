@@ -31,6 +31,11 @@ class GetFeedSubmissionCount extends AbstractMwsCommand
      * {@inheritdoc}
      */
     protected $action = 'GetFeedSubmissionCount';
+    
+    /**
+     * {@inheritdoc}
+     */
+    protected $version = '2009-01-01';
 
     /**
      * Set feed type list

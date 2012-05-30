@@ -38,10 +38,16 @@ class GetFeedSubmissionList extends AbstractIterableMwsCommand
      * {@inheritdoc}
      */
     protected $action = 'GetFeedSubmissionList';
+    
     /**
      * {@inheritdoc}
      */
     protected $recordPath = 'FeedSubmissionInfo';
+    
+    /**
+     * {@inheritdoc}
+     */
+    protected $version = '2009-01-01';
 
     /**
      * Set feed submission id list
