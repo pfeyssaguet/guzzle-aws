@@ -35,6 +35,11 @@ class CancelFeedSubmissions extends AbstractMwsCommand
      * {@inheritdoc}
      */
     protected $action = 'CancelFeedSubmissions';
+    
+    /**
+     * {@inheritdoc}
+     */
+    protected $version = '2009-01-01';
 
     /**
      * Set feed submission ID list

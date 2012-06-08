@@ -28,6 +28,11 @@ class ListOrderItemsByNextToken extends AbstractMwsOrderCommand
      * {@inheritdoc}
      */
     protected $recordPath = '//OrderItems/OrderItem';
+    
+    /**
+     * {@inheritdoc}
+     */
+    protected $version = '2011-01-01';
 
     /**
      * Set next token
