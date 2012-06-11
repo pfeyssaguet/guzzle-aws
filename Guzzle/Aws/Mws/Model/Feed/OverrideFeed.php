@@ -2,18 +2,17 @@
 
 namespace Guzzle\Aws\Mws\Model\Feed;
 
-use Guzzle\Aws\Mws\Model\Feed\OverrideFeed\Override;
+use \Guzzle\Aws\Mws\Model\Feed\OverrideFeed\Override;
 
 /**
  * Override feed class
- * 
+ *
  * Used for setting shipping override on products
- * 
+ *
  * @author jason@shoebacca.com
  */
 class OverrideFeed extends AbstractFeed
 {
-
     /**
      * {@inheritdoc}
      */
@@ -21,10 +20,10 @@ class OverrideFeed extends AbstractFeed
 
     /**
      * Add inventory to feed
-     * 
+     *
      * @param Inventory $inventory
-     * 
-     * @return InventoryFeed 
+     *
+     * @return InventoryFeed
      */
     public function addOverride(Override $override)
     {

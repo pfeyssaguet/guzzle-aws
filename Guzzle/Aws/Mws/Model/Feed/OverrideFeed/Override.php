@@ -39,7 +39,7 @@ class Override extends AbstractFeedItem
         return $this->set('Type', $value);
     }
 
-    public function setShipAmount($value, $currencyValue)
+    public function setShipAmount($value)
     {
         return $this->set('ShipAmount', $value);
     }
