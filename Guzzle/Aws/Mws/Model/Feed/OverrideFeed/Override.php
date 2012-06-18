@@ -54,21 +54,25 @@ class Override extends AbstractFeedItem
      */
     public function writeXml()
     {
+        //Override
         $this->xml->startElement('Override');
         $this->writeNode('SKU');
-
+        //ShippingOverride
         $this->xml->startElement('ShippingOverride');
-
         $this->writeNode('ShipOption');
-        $this->writeNode('IsShippingRestricted');
         $this->writeNode('Type');
-
+        //ShipAmount
         $this->xml->startElement('ShipAmount');
         $this->xml->writeAttribute('currency', $this->get('ShipAmountCurrency'));
         $this->xml->text($this->get('ShipAmount'));
-
         //ShipAmount
         $this->xml->endElement();
+        //ShippingOverride
+        $this->xml->endElement();
+        //ShippingOverride
+        $this->xml->startElement('ShippingOverride');
+        $this->writeNode('ShipOption');
+        $this->writeNode('IsShippingRestricted');
         //ShippingOverride
         $this->xml->endElement();
         //Override
