@@ -155,32 +155,6 @@ class ShoeProduct extends AbstractProduct
      */
     public function setColorMap($value)
     {
-        if (!in_array(strtolower($value), array(
-            'beige',
-            'black',
-            'blue',
-            'bronze',
-            'brown',
-            'gold',
-            'green',
-            'gray',
-            'metallic',
-            'multi-colored',
-            'off-white',
-            'orange',
-            'pink',
-            'purple',
-            'red',
-            'silver',
-            'transparent',
-            'turquoise',
-            'white',
-            'yellow'
-        ))
-        ) {
-            throw new \InvalidArgumentException('Invalid ColorMap value');
-        }
-
         return $this->set('ColorMap', $value);
     }
 
@@ -205,8 +179,7 @@ class ShoeProduct extends AbstractProduct
             'neutral',
             'motion-control',
             'stability'
-        ))
-        ) {
+        ))) {
             throw new \InvalidArgumentException('Invalid ArchType value');
         }
 
@@ -296,8 +269,7 @@ class ShoeProduct extends AbstractProduct
             'interchangable-cleats',
             'outdoor',
             'turf'
-        ))
-        ) {
+        ))) {
             throw new \InvalidArgumentException('Invalid CleatDescription value');
         }
 
