@@ -546,49 +546,6 @@ class ShoeProduct extends AbstractProduct
      */
     public function setMaterialType($value)
     {
-        if (!in_array(strtolower($value), array(
-            'canvas',
-            'cotton',
-            'crocodile',
-            'elastic',
-            'exotic',
-            'fabric',
-            'faux-fur',
-            'fleece',
-            'fur',
-            'haircalf',
-            'hemp',
-            'lace',
-            'leather',
-            'leather-and-fabric',
-            'leather-and-mesh',
-            'leather-and-rubber',
-            'leather-and-synthetic',
-            'lizard',
-            'mesh',
-            'microfiber',
-            'nubuck',
-            'patent-leather',
-            'polyester',
-            'rubber',
-            'satin',
-            'sheepskin',
-            'silk',
-            'snakeskin',
-            'suede',
-            'synthetic',
-            'synthetic-and-fabric',
-            'synthetic-and-leather',
-            'synthetic-and-mesh',
-            'synthetic-and-rubber',
-            'velvet',
-            'wood',
-            'wool'
-        ))
-        ) {
-            throw new \InvalidArgumentException('Invalid MaterialType value');
-        }
-
         return $this->set('MaterialType', $value);
     }
 
