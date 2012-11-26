@@ -56,7 +56,7 @@ class ClothingProduct extends AbstractProduct
     public function setVariationTheme($value)
     {
         if (!in_array($value, array('Size', 'Color', 'SizeColor'))) {
-            throw new \InvalidArgumentException('Invalid variation theme');
+            throw new \InvalidArgumentException(sprintf('Invalid variation theme: %s', $value));
         }
 
         return $this->set('VariationTheme', $value);

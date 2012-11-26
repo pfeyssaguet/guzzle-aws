@@ -234,7 +234,7 @@ class SportsProduct extends AbstractProduct
                 'WheelSizeWeight',
                 'Width'
             ))) {
-            throw new \InvalidArgumentException('Invalid variation theme');
+            throw new \InvalidArgumentException(sprintf('Invalid variation theme: %s', $value));
         }
 
         return $this->set('VariationTheme', $value);

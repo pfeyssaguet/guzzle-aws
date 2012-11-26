@@ -31,7 +31,7 @@ class JewelryWatchProduct extends AbstractProduct
         if (!in_array($value, array(
                 'BandColor'
             ))) {
-            throw new \InvalidArgumentException('Invalid variation theme');
+            throw new \InvalidArgumentException(sprintf('Invalid variation theme: %s', $value));
         }
 
         return $this->set('VariationTheme', $value);

@@ -120,16 +120,15 @@ class ShoeProduct extends AbstractProduct
      */
     public function setVariationTheme($value)
     {
-        if (!in_array(strtolower($value), array(
+        if (!in_array($value, array(
             'Size',
             'Color',
             'SizeColor',
             'ColorName-MagnificationStrength',
             'ColorName-LensColor',
             'ColorName-LensWidth'
-        ))
-        ) {
-            throw new \InvalidArgumentException('Invalid VariationTheme value');
+        ))) {
+            throw new \InvalidArgumentException(sprintf('Invalid VariationTheme value: %s', $value));
         }
 
         return $this->set('VariationTheme', $value);
