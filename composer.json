@@ -21,7 +21,7 @@
     ],
     "require": {
         "php": ">=5.3.2",
-        "guzzle/guzzle": "1.0.4"
+        "shoebacca/guzzle": "*@dev"
     },
     "autoload": {
         "psr-0": { "Guzzle\\Aws": "" }
