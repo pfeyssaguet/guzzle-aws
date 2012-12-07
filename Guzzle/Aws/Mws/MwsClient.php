@@ -84,11 +84,13 @@ class MwsClient extends AbstractClient
         );
 
         // Retry 500 and 503 failures, up to 3 times
+        /*
         $client->getEventManager()->attach(new ExponentialBackoffPlugin(3, null, function($try){
             // @codeCoverageIgnoreStart
             return 60;
             // @codeCoverageIgnoreEnd
         }));
+         */
 
         return $client;
     }

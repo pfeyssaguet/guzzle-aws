@@ -60,6 +60,12 @@ class AbstractMwsCommand extends AbstractCommand
             ->set('Action', $this->action)
             ->set('Version', $this->version);
         
+        // Set cURL options
+        $this->request->getCurlOptions()
+            ->set(CURLOPT_SSL_VERIFYHOST, 0)
+            ->set(CURLOPT_SSL_VERIFYPEER, 0)
+            ->set(CURLOPT_FORBID_REUSE, 1);
+        
 
         // Set authorization fields
         $config = $this->getClient()->getConfig();
