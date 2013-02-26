@@ -28,7 +28,7 @@ class ResultIterator extends ResourceIterator
     {
         // Throttle requests by waiting 1 second
         sleep(1);
-
+        
         $command = $this->client->getCommand($this->data['next_command'])
             ->setNextToken($this->getNextToken());
         $response = $this->client->execute($command);
@@ -56,6 +56,8 @@ class ResultIterator extends ResourceIterator
 
         // @codeCoverageIgnoreStart
         if ((string) $result->HasNext == 'true') {
+            $this->nextToken = (string) $result->NextToken;
+        } else if ($result->NextToken != '') {
             $this->nextToken = (string) $result->NextToken;
         } else {
             $this->nextToken = null;
