@@ -120,8 +120,9 @@ class AbstractMwsCommand extends AbstractCommand
                 $resultNode = $this->resultNode;
             }
             // @codeCoverageIgnoreEnd
-            $this->result = $this->result->{$resultNode};
-
+            if($resultNode != '.'){
+                $this->result = $this->result->{$resultNode};
+            }
             // Iterable result
             if ($this instanceof AbstractIterableMwsCommand || $this instanceof AbstractIterableMwsOrderCommand) {
                 $nextCommand = Inflector::snake($this->action . 'ByNextToken');
