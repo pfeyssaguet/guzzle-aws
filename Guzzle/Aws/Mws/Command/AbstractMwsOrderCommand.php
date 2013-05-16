@@ -29,6 +29,8 @@ class AbstractMwsOrderCommand extends AbstractMwsCommand
 
         // Copy Merchant parameter to SellerId, because Amazon is stupid and can't even follow their own standards
         $this->getRequest()->getQuery()->set('SellerId', $this->getRequest()->getQuery()->get('Merchant'));
+
+
     }
 
 }
