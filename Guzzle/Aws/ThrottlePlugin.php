@@ -58,12 +58,9 @@ class ThrottlePlugin implements Observer
             if ($this->lastRequest) {
                 $diff =  ($timestamp - $this->lastRequest) * 1000; // Time since last request in ms
                 
-                print $diff;
-                
                 // If it has been less than the specified time, sleep off the difference
                 if ($diff < $this->timeBetweenRequests) {
                     $duration = ($this->timeBetweenRequests - $diff);
-                    printf('SLEEPING FOR %s', $duration); 
                     usleep($duration * 1000); // Convert to microseconds
                 }
             }
