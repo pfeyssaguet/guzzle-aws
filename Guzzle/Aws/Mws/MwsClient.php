@@ -12,6 +12,7 @@ use Guzzle\Http\Plugin\ExponentialBackoffPlugin;
 use Guzzle\Aws\AbstractClient;
 use Guzzle\Aws\QueryStringAuthPlugin;
 use Guzzle\Aws\Signature\SignatureV2;
+use Guzzle\Aws\ThrottlePlugin;
 
 /**
  * Client for Amazon Marketplace Web Service
@@ -89,6 +90,9 @@ class MwsClient extends AbstractClient
             return 60;
             // @codeCoverageIgnoreEnd
         }));
+        
+        // Throttle requests, no more than one per second
+        $client->getEventManager()->attach(new ThrottlePlugin(1000));
 
         return $client;
     }
