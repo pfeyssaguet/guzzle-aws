@@ -59,7 +59,7 @@ class MwsClient extends AbstractClient
     public static function factory($config)
     {
         $defaults = array(
-            'base_url' => 'https://mws.amazonservices.com/',
+            'base_url' => 'https://mws.amazonservices.fr/',
             'version' => self::VERSION
         );
         $required = array('access_key', 'secret_key', 'merchant_id', 'marketplace_id', 'application_name', 'application_version');
