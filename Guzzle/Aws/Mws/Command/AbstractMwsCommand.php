@@ -140,8 +140,9 @@ class AbstractMwsCommand extends AbstractCommand
                 }
 
                 // Get next token unless HasNext property is set to false
-                $nextToken = (string) $this->result->NextToken;
-                if (!empty($this->result->HasNext)) {
+                if (!isset($this->result->NextToken)) {
+                    $nextToken = null;
+                } elseif (!empty($this->result->HasNext)) {
                     if ($this->result->HasNext == 'false') {
                         $nextToken = null;
                     }
