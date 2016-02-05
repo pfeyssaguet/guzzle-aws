@@ -117,9 +117,6 @@ class AbstractMwsCommand extends AbstractCommand
 
         if ($this->result instanceof \SimpleXMLElement) {
 
-            // Get result object from XML response
-            $this->result = new XmlElement($this->result->asXML());
-
             // @codeCoverageIgnoreStart
             if (empty($this->resultNode)) {
                 $resultNode = $this->action . 'Result';
